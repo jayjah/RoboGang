@@ -1,0 +1,8 @@
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/obj/Debug/RoboGang.Properties.Resources.resources
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/obj/Debug/RoboGang.Visualization.FieldVisualizer.resources
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/bin/Debug/RoboGang.exe.config
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/bin/Debug/RoboGang.exe.mdb
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/bin/Debug/RoboGang.exe
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/obj/Debug/RoboGang.exe
+/home/jayjah/Dokumente/Softwaretechnikprojekt/MonoCrapi/robocup-simulation-1/Client/Crapi/obj/Debug/RoboGang.exe.mdb
