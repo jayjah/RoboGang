@@ -147,7 +147,86 @@ namespace RoboGang.BasicComponents
 
         public override Command do_while_corner_own()
         {
-            throw new NotImplementedException();
+            Player p = this.PlayerHandler.Player;
+            bool upper_corner = false;
+            Point2D cornerPosition = new Point2D(50, 30);
+            Random rnd = new Random();
+            if (p.World.TheBall.Position.Y > 0)
+            { //falls buggy, dann weil position hier fuer player nicht sichtbar. Pruefen
+                upper_corner = true;
+                cornerPosition.SetLocation(50, -30);
+            }
+
+            if (p.World.TheBall.SeenThisCycle && !p.IsGoalie)
+            {
+                if (p.BallIsKickable)
+                {
+                    TeamYaffa.CRaPI.World.GameObjects.FieldPlayer nearestTeammate = findNearestTeammate();
+                    if (nearestTeammate != null)
+                    {
+                        return BasicActions.KickToPoint(p, nearestTeammate.Position, 40);
+                    }
+                    else
+                    {
+                        if (upper_corner)
+                        {
+                            return BasicActions.KickToPoint(p, new Point2D(40 - p.UniformNumber, -20), 50);
+                        }
+                        else
+                        {
+                            return BasicActions.KickToPoint(p, new Point2D(40 - p.UniformNumber, 20), 50);
+                        }
+
+                    }
+                }
+                else
+                {
+                    if (p.World.TheBall.Distance < 18)
+                        if (findNearestTeammate() != null)
+                        {
+                            return BasicActions.DashToPoint(p, p.World.TheBall.Position, 20);
+                        }
+                        else
+                            return BasicActions.DashToPoint(p, p.World.TheBall.Position, 30 * (p.UniformNumber * 5));
+                    else
+                    {
+                        if (upper_corner)
+                        {
+                            return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(3 * p.UniformNumber, cornerPosition.Y + (10 + p.UniformNumber)), 38 - p.UniformNumber);
+                        }
+                        else
+                        {
+                            return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(3 * p.UniformNumber, cornerPosition.Y - (10 - p.UniformNumber)), 38 - p.UniformNumber);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (!p.IsGoalie)
+                {
+                    if (p.UniformNumber > 8)
+                    {
+                        if (upper_corner)
+                        {
+                            return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(3 * p.UniformNumber, cornerPosition.Y + (10 + p.UniformNumber)), 38 - p.UniformNumber);
+                        }
+                        else
+                        {
+                            return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(3 * p.UniformNumber, cornerPosition.Y - (10 - p.UniformNumber)), 38 - p.UniformNumber);
+                        }
+                    }
+                    else if (p.World.MyPosition.XDistanceTo(cornerPosition) < 30)
+                    {
+                        return BasicActions.DashToPoint(p, cornerPosition, 50);
+                    }
+                }
+                else
+                {
+                    return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(-45, 0), 20);
+                }
+            }
+            return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(rnd.Next(-20, 30), rnd.Next(-20, 20)), 40);
         }
 
         public override Command do_while_corner_opponent()
