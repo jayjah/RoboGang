@@ -226,6 +226,14 @@ namespace RoboGang.BasicComponents
                     return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(-45, 0), 20);
                 }
             }
+            if (p.UniformNumber == 7)
+            {
+                return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(50, 30), 40);
+            }
+            if (p.UniformNumber == 8)
+            {
+                return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(50, -30), 40);
+            }
             return BasicActions.DashToPoint(p, new TeamYaffa.CRaPI.Utility.Point2D(rnd.Next(-20, 30), rnd.Next(-20, 20)), 40);
         }
 
